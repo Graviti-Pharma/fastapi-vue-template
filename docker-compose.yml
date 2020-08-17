@@ -52,7 +52,6 @@ services:
         entrypoint: ./entrypoint.sh
         restart: unless-stopped
         volumes:
-            - web-root:/home/node/app/dist
             - ./frontend:/home/node/app
             - /home/node/app/node_modules
         environment:
@@ -69,7 +68,6 @@ services:
         ports:
             - 8000:80
         volumes:
-            - web-root:/var/www/html
             - ./config/nginx:/etc/nginx/conf.d/
         depends_on:
             - frontend
@@ -85,5 +83,4 @@ networks:
         driver: bridge
 
 volumes:
-    web-root:
     db_vol:
